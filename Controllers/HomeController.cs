@@ -13,6 +13,11 @@ namespace MVC_laboration.Controllers
         {
             List<PostModel> Posts = Post.GetPosts();
 
+            if (HttpContext.Request.Cookies.ContainsKey("name"))
+            {
+                ViewBag.Hello = HttpContext.Request.Cookies["name"].ToString() + "!";
+            }
+
             return View(Posts);
         }
 
@@ -30,7 +35,14 @@ namespace MVC_laboration.Controllers
                 Post.AddPost();
                 ModelState.Clear();
                 ViewBag.Message = "Inlägg skapat!";
-            } 
+
+                if (HttpContext.Request.Cookies.ContainsKey("name"))
+                {
+                    HttpContext.Response.Cookies.Delete("name");
+                }
+
+                HttpContext.Response.Cookies.Append("name", Post.Author);
+            }
             return View();
         }
 

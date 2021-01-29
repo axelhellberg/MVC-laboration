@@ -4,7 +4,10 @@
     ViewBag.Title = "Start";
 }
 
-<h1>Välkommen</h1>
+<h1>Välkommen @ViewBag.Hello</h1>
+<p>
+    @ViewBag.DidDelete
+</p>
 @foreach(var Post in Model)
 {
     <article>
@@ -14,7 +17,7 @@
         </div>
         
         <p>@Post.Content</p>
-        
+
         <a asp-controller="Home" asp-action="Details" asp-route-id="@Post.Id" aria-label="gå till inlägg"></a>
     </article>
 }
