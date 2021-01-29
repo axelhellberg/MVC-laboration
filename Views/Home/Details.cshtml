@@ -1,0 +1,15 @@
+﻿@model MVC_laboration.Models.PostModel
+@{
+    ViewBag.Title = "Edit";
+}
+<article>
+    <div class="post-info">
+        <span class="author">@Model.Author</span>
+        <span class="timestamp">@Model.Timestamp</span>
+    </div>
+   
+    <p>@Model.Content</p>
+    <form method="post">
+        <input type="submit" value="Radera" class="delete" asp-controller="Home" asp-action="Delete" asp-route-id="@Model.Id" />
+    </form>
+</article>

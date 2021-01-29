@@ -1,0 +1,20 @@
+﻿
+@model IEnumerable<MVC_laboration.Models.PostModel>
+@{
+    ViewBag.Title = "Start";
+}
+
+<h1>Välkommen</h1>
+@foreach(var Post in Model)
+{
+    <article>
+        <div class="post-info">
+            <span class="author">@Post.Author</span> 
+            <span class="timestamp">@Post.Timestamp</span>
+        </div>
+        
+        <p>@Post.Content</p>
+        
+        <a asp-controller="Home" asp-action="Details" asp-route-id="@Post.Id" aria-label="gå till inlägg"></a>
+    </article>
+}

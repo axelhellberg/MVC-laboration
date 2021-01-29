@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html lang="sv-se">
+<head>
+    <meta name="viewport" content="width=device-width" charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/css/styles.css" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a asp-controller="Home" asp-action="Index">Start</a></li>
+                <li><a asp-controller="Home" asp-action="Create">Skapa</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <main>
+            @RenderBody()
+        </main>
+    </div>
+    <script src="~/js/main.js"></script>
+</body>
+</html>

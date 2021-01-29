@@ -1,0 +1,26 @@
+﻿@model MVC_laboration.Models.PostModel
+
+@{
+    ViewBag.Title = "Skapa";
+}
+
+<h1>Skapa inlägg</h1>
+
+<form method="post">
+    <label asp-for="Author"></label>
+    <input asp-for="Author" />
+
+    <input type="checkbox" />
+
+    <label asp-for="Content"></label>
+    <textarea asp-for="Content"></textarea>
+    <div class="count-wrap">
+        <span id="char-count"></span><span> tecken kvar</span>
+    </div>
+    <span asp-validation-for="Content"></span>
+
+
+    <input type="submit" />
+
+    <span class="success">@ViewBag.Message</span>
+</form>
