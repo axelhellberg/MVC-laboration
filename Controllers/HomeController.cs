@@ -34,7 +34,7 @@ namespace MVC_laboration.Controllers
             {
                 Post.AddPost();
                 ModelState.Clear();
-                ViewBag.Message = "Inlägg skapat!";
+                ViewData["Message"] = "Inlägg skapat!";
 
                 if (HttpContext.Request.Cookies.ContainsKey("name"))
                 {

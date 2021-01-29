@@ -13,16 +13,19 @@ namespace MVC_laboration.Models
     {
         public int Id { get; set; }
 
-        //[DisplayFormat(ConvertEmptyStringToNull = true, NullDisplayText = "Anonym")]
-        [DisplayName("Namn (valfritt)")]
+        [DisplayName("Namn")]
+        [StringLength(20)]
         public string Author { get; set; }
-        
-        [Required(ErrorMessage ="Du måste ange ett meddelande!")]
+
+        [Required(ErrorMessage = "Du måste ange ett meddelande!")]
         [StringLength(100)]
-        [DisplayName("Meddelande")]
+        [DisplayName("Meddelande (krävs)")]
         public string Content { get; set; }
 
         public string Timestamp { get; set; }
+
+        [DisplayName("Humör")]
+        public string Mood { get; set; }
 
         public PostModel() // konstruktor
         {

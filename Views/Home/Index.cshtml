@@ -5,19 +5,17 @@
 }
 
 <h1>Välkommen @ViewBag.Hello</h1>
-<p>
-    @ViewBag.DidDelete
-</p>
 @foreach(var Post in Model)
 {
     <article>
         <div class="post-info">
-            <span class="author">@Post.Author</span> 
+            <span class="author">@Post.Author</span>
             <span class="timestamp">@Post.Timestamp</span>
         </div>
         
         <p>@Post.Content</p>
-
+        <span class="Mood">@Post.Mood</span>
         <a asp-controller="Home" asp-action="Details" asp-route-id="@Post.Id" aria-label="gå till inlägg"></a>
     </article>
 }
+<partial name="_PartialTest" />

@@ -64,7 +64,12 @@ form .success {
   font-weight: bold; }
 
 form .count-wrap {
-  font-size: .83rem; }
+  font-size: .83rem;
+  margin-bottom: 1rem; }
+
+form select {
+  display: block;
+  font-size: 1.33rem; }
 
 header {
   background-color: #0076CD;
