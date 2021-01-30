@@ -47,6 +47,10 @@ form {
         padding: .25em;
     }
 
+    input[type="checkbox"] {
+        margin-bottom: 1rem;
+    }
+
     #Content {
         min-height: 100px;
         margin-bottom: .25rem;

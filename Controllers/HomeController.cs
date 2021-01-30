@@ -11,12 +11,17 @@ namespace MVC_laboration.Controllers
     {
         public IActionResult Index(PostModel Post)
         {
-            List<PostModel> Posts = Post.GetPosts();
-
+            
             if (HttpContext.Request.Cookies.ContainsKey("name"))
             {
-                ViewBag.Hello = HttpContext.Request.Cookies["name"].ToString() + "!";
+                ViewBag.Hello = "Välkommen, " + HttpContext.Request.Cookies["name"] + "!";
             }
+            else
+            {
+                ViewBag.Hello = "Välkommen!";
+            }
+
+            List<PostModel> Posts = Post.GetPosts();
 
             return View(Posts);
         }
@@ -41,12 +46,15 @@ namespace MVC_laboration.Controllers
                 ModelState.Clear();
                 ViewData["Message"] = "Inlägg skapat!";
 
-                if (HttpContext.Request.Cookies.ContainsKey("name"))
+                if (Post.RememberMe)
                 {
-                    HttpContext.Response.Cookies.Delete("name");
+                    if (HttpContext.Request.Cookies.ContainsKey("name"))
+                    {
+                        HttpContext.Response.Cookies.Delete("name");
+                    }
+
+                    HttpContext.Response.Cookies.Append("name", Post.Author);
                 }
-                
-                HttpContext.Response.Cookies.Append("name", Post.Author);
             }
             return View();
         }

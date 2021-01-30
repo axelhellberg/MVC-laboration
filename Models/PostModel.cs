@@ -27,6 +27,9 @@ namespace MVC_laboration.Models
         [DisplayName("Humör")]
         public string Mood { get; set; }
 
+        [DisplayName("Kom ihåg mig")]
+        public bool RememberMe { get; set; }
+
         public PostModel() // skapa tom json-fil om den inte finns
         {
             if (!File.Exists("data.json"))

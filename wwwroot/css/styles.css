@@ -31,6 +31,9 @@ form input[type="text"], form textarea {
   font-size: 1rem;
   padding: .25em; }
 
+form input[type="checkbox"] {
+  margin-bottom: 1rem; }
+
 form #Content {
   min-height: 100px;
   margin-bottom: .25rem; }
