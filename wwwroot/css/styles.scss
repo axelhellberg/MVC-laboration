@@ -154,7 +154,6 @@ header {
             .post-info {
                 display: inline;
 
-
                 .author {
                     font-weight: bold;
                     color: $main;
@@ -186,6 +185,11 @@ header {
                 left: 0;
                 height: 100%;
                 width: 100%;
+                border-radius: inherit;
+
+                &:hover {
+                    border-left: 4px solid $main;
+                }
             }
         }
 
