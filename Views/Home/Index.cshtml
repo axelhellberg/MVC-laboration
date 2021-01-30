@@ -5,6 +5,7 @@
 }
 
 <h1>Välkommen @ViewBag.Hello</h1>
+<partial name="_ClockPartial" />
 @foreach(var Post in Model)
 {
     <article>
@@ -15,7 +16,6 @@
         
         <p>@Post.Content</p>
         <span class="Mood">@Post.Mood</span>
-        <a asp-controller="Home" asp-action="Details" asp-route-id="@Post.Id" aria-label="gå till inlägg"></a>
+        <a class="details" asp-controller="Home" asp-action="Details" asp-route-id="@Post.Id" aria-label="gå till inlägg"></a>
     </article>
 }
-<partial name="_PartialTest" />

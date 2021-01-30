@@ -27,7 +27,7 @@ namespace MVC_laboration.Models
         [DisplayName("Humör")]
         public string Mood { get; set; }
 
-        public PostModel() // konstruktor
+        public PostModel() // skapa tom json-fil om den inte finns
         {
             if (!File.Exists("data.json"))
             {
@@ -36,14 +36,14 @@ namespace MVC_laboration.Models
                 File.WriteAllText("data.json", EmptyJson);
             }
         }
-        public List<PostModel> GetPosts()
+        public List<PostModel> GetPosts() // hämta och deserialisera json
         {
             string Json = File.ReadAllText("data.json");
 
             return JsonSerializer.Deserialize<List<PostModel>>(Json);
         }
 
-        public void AddPost()
+        public void AddPost() // skapa inlägg
         {
             if (Author == null) Author = "Anonym";
 
@@ -56,7 +56,7 @@ namespace MVC_laboration.Models
             IndexAndWrite(Posts);
         }
 
-        public bool DeletePost()
+        public bool DeletePost() // ta bort inlägg
         {
             List<PostModel> Posts = GetPosts();
 

@@ -24,6 +24,11 @@ namespace MVC_laboration.Controllers
         [HttpGet("/Skapa")]
         public IActionResult Create()
         {
+            if (HttpContext.Request.Cookies.ContainsKey("name"))
+            {
+                ViewBag.Author = HttpContext.Request.Cookies["name"].ToString();
+            }
+
             return View();
         }
 
@@ -40,7 +45,7 @@ namespace MVC_laboration.Controllers
                 {
                     HttpContext.Response.Cookies.Delete("name");
                 }
-
+                
                 HttpContext.Response.Cookies.Append("name", Post.Author);
             }
             return View();

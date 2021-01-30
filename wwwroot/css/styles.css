@@ -10,6 +10,12 @@
 h1, h2, h3 {
   margin-bottom: 1em; }
 
+h2 span {
+  display: block;
+  font-size: .67em;
+  font-weight: 400;
+  margin-top: .33em; }
+
 body {
   font-family: 'Asap', Arial, Helvetica, sans-serif; }
 
@@ -95,13 +101,13 @@ header {
   margin: 0 auto;
   padding: 2rem; }
   .container main article {
+    position: relative;
     padding: 1rem;
     max-width: 600px;
     background-color: #f9f9f9;
     margin-bottom: 2rem;
     border-radius: 4px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16);
-    position: relative; }
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16); }
     .container main article .post-info {
       display: inline; }
       .container main article .post-info .author {
@@ -120,7 +126,7 @@ header {
     .container main article p {
       font-size: .89rem;
       margin: 1rem 0; }
-    .container main article a {
+    .container main article a.details {
       position: absolute;
       top: 0;
       left: 0;

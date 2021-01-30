@@ -1,0 +1,7 @@
+﻿<h2>
+    Idag är det
+    @System.Globalization.CultureInfo.GetCultureInfo("sv-SE").DateTimeFormat.GetDayName(@DateTime.Now.DayOfWeek).
+    Klockan är
+    @DateTime.Now.ToShortTimeString().
+    <span>(Senast uppdaterad @DateTime.Now)</span>
+</h2>
