@@ -21,13 +21,6 @@ h1, h2, h3 {
     margin-bottom: 1em;
 }
 
-h2 span {
-    display: block;
-    font-size: .67em;
-    font-weight: 400;
-    margin-top: .33em;
-}
-
 body {
     font-family: 'Asap', Arial, Helvetica, sans-serif;
 }
@@ -148,6 +141,7 @@ header {
     padding: 2rem;
 
     main {
+
         article {
             position: relative;
             padding: 1rem;
@@ -192,6 +186,15 @@ header {
                 left: 0;
                 height: 100%;
                 width: 100%;
+            }
+        }
+
+        h2.clock {
+            span {
+                display: block;
+                font-size: .67em;
+                font-weight: 400;
+                margin-top: .33em;
             }
         }
     }

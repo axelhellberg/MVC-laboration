@@ -1,7 +1,7 @@
 ﻿@model MVC_laboration.Models.PostModel
 
 @{
-    ViewBag.Title = "Skapa";
+    ViewBag.Title = "Skapa inlägg";
 }
 
 <h1>Skapa inlägg</h1>
@@ -9,7 +9,7 @@
 <form method="post">
     <label asp-for="Author"></label>
     <input asp-for="Author" value="@ViewBag.Author" />
-    
+
     <label asp-for="RememberMe"></label>
     <input asp-for="RememberMe" />
 
@@ -28,7 +28,6 @@
         <option>🤪</option>
         <option>🤔</option>
     </select>
-
 
     <input type="submit" />
 
