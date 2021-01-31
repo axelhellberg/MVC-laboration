@@ -11,57 +11,38 @@ namespace MVC_laboration.Models
 {
     public class PostModel
     {
-        public int Id { get; set; }
-
-        [DisplayName("Namn")]
-        [StringLength(20)]
-        public string Author { get; set; }
-
-        [Required(ErrorMessage = "Du måste ange ett meddelande!")]
-        [StringLength(100)]
-        [DisplayName("Meddelande (krävs)")]
-        public string Content { get; set; }
-
-        public string Timestamp { get; set; }
-
-        [DisplayName("Humör")]
-        public string Mood { get; set; }
-
-        [DisplayName("Kom ihåg mig")]
-        public bool RememberMe { get; set; }
-
         public PostModel() // skapa tom json-fil om den inte finns
         {
             if (!File.Exists("data.json"))
             {
-                List<PostModel> NewList = new List<PostModel>();
+                List<Post> NewList = new List<Post>();
                 string EmptyJson = JsonSerializer.Serialize(NewList);
                 File.WriteAllText("data.json", EmptyJson);
             }
         }
-        public List<PostModel> GetPosts() // hämta och deserialisera json
+        public List<Post> GetPosts() // hämta och deserialisera json
         {
             string Json = File.ReadAllText("data.json");
 
-            return JsonSerializer.Deserialize<List<PostModel>>(Json);
+            return JsonSerializer.Deserialize<List<Post>>(Json);
         }
 
-        public void AddPost() // skapa inlägg
+        public void AddPost(Post Post) // skapa inlägg
         {
-            if (Author == null) Author = "Anonym";
+            //if (Author == null) { Author = "Anonym"; }
 
-            Timestamp = DateTime.Now.ToString();
+            //Timestamp = DateTime.Now.ToString();
 
-            List<PostModel> Posts = GetPosts();
+            List<Post> Posts = GetPosts();
 
-            Posts.Add(this);
+            Posts.Add(Post);
 
             IndexAndWrite(Posts);
         }
 
-        public bool DeletePost() // ta bort inlägg
+        public bool DeletePost(int Id) // ta bort inlägg
         {
-            List<PostModel> Posts = GetPosts();
+            List<Post> Posts = GetPosts();
 
             if (Id >= 0 && Id < Posts.Count)
             {
@@ -76,13 +57,13 @@ namespace MVC_laboration.Models
         }
 
         // Indexera listan, konvertera till JSON och spara på fil
-        private void IndexAndWrite(List<PostModel> Posts)
+        private void IndexAndWrite(List<Post> Posts)
         {
             int Index = 0;
 
-            foreach (PostModel Element in Posts)
+            foreach (Post Post in Posts)
             {
-                Element.Id = Index;
+                Post.Id = Index;
                 Index++;
             }
 

@@ -9,7 +9,7 @@ namespace MVC_laboration.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index(PostModel Post)
+        public IActionResult Index()
         {
             
             if (HttpContext.Request.Cookies.ContainsKey("name"))
@@ -21,7 +21,9 @@ namespace MVC_laboration.Controllers
                 ViewBag.Hello = "Välkommen!";
             }
 
-            List<PostModel> Posts = Post.GetPosts();
+            PostModel Post = new PostModel();
+
+            List<Post> Posts = Post.GetPosts();
 
             return View(Posts);
         }
@@ -38,40 +40,52 @@ namespace MVC_laboration.Controllers
         }
 
         [HttpPost("/Skapa")]
-        public IActionResult Create(PostModel Post)
+        public IActionResult Create(Post NewPost)
         {
+            PostModel Post = new PostModel();
+
             if (ModelState.IsValid)
             {
-                Post.AddPost();
+                //if (String.IsNullOrWhiteSpace(NewPost.Author)) NewPost.Author = "Anonym";
+                
+                //NewPost.Timestamp = DateTime.Now.ToString();
+
+                Post.AddPost(NewPost);
                 ModelState.Clear();
                 ViewData["Message"] = "Inlägg skapat!";
 
-                if (Post.RememberMe)
+                if (NewPost.RememberMe)
                 {
                     if (HttpContext.Request.Cookies.ContainsKey("name"))
                     {
                         HttpContext.Response.Cookies.Delete("name");
                     }
 
-                    HttpContext.Response.Cookies.Append("name", Post.Author);
+                    HttpContext.Response.Cookies.Append("name", NewPost.Author);
                 }
             }
             return View();
         }
 
         [HttpGet("/{id}")]
-        public IActionResult Details(int id, PostModel Post)
+        public IActionResult Details(int Id)
         {
-            List<PostModel> Posts = Post.GetPosts();
+            PostModel Post = new PostModel();
 
-            return View(Posts[id]);
+            List<Post> Posts = Post.GetPosts();
+
+            return View(Posts[Id]);
         }
 
         [HttpPost("/{id}")]
-        public IActionResult Delete(int id, PostModel Post)
+        public IActionResult Delete(int Id)
         {
-            Post.Id = id;
-            Post.DeletePost();
+            PostModel Post = new PostModel();
+
+            List<Post> Posts = Post.GetPosts();
+
+            Post.DeletePost(Id);
+
             return RedirectToAction(nameof(Index));
         }
     }
