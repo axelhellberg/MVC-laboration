@@ -11,7 +11,6 @@ namespace MVC_laboration.Controllers
     {
         public IActionResult Index()
         {
-            
             if (HttpContext.Request.Cookies.ContainsKey("name"))
             {
                 ViewBag.Hello = "Välkommen, " + HttpContext.Request.Cookies["name"] + "!";
@@ -46,9 +45,7 @@ namespace MVC_laboration.Controllers
 
             if (ModelState.IsValid)
             {
-                //if (String.IsNullOrWhiteSpace(NewPost.Author)) NewPost.Author = "Anonym";
-                
-                //NewPost.Timestamp = DateTime.Now.ToString();
+                if (String.IsNullOrWhiteSpace(NewPost.Author)) NewPost.Author = "Anonym";
 
                 Post.AddPost(NewPost);
                 ModelState.Clear();

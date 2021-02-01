@@ -29,10 +29,6 @@ namespace MVC_laboration.Models
 
         public void AddPost(Post Post) // skapa inlägg
         {
-            //if (Author == null) { Author = "Anonym"; }
-
-            //Timestamp = DateTime.Now.ToString();
-
             List<Post> Posts = GetPosts();
 
             Posts.Add(Post);
